@@ -7,7 +7,6 @@ let pokemonList = [
   {
     name: "Charizard",
     height: 1.7,
-    comment: "Wow that's big!",
     type: ["Fire", "Flying"],
   },
   {
@@ -20,8 +19,8 @@ let pokemonList = [
 let output = "";
 for (let i = 0; i < pokemonList.length; i++) {
   output += `${pokemonList[i].name} (Height: ${pokemonList[i].height})`;
-  if (pokemonList[i].comment) {
-    output += ` - ${pokemonList[i].comment}`;
+  if (pokemonList[i].height > 1.5) {
+    output += " - Wow that's big!";
   }
   output += `<br>`;
 }

@@ -1,11 +1,10 @@
-// Wrap the pokemonList in an IIFE and create pokemonRepository
+// Wrapping the pokemonList in an IIFE and creating pokemonRepository
 let pokemonRepository = (function () {
   // This array is now private to the IIFE
   let pokemonList = [
     { name: "Bulbasaur", height: 0.7, types: ["grass", "poison"] },
     { name: "Charizard", height: 1.7, types: ["fire", "flying"] },
     { name: "Blastoise", height: 1.6, types: ["water"] },
-    // ... any other Pokémon you have in your list
   ];
 
   // Public functions that will be returned
@@ -24,7 +23,10 @@ let pokemonRepository = (function () {
   };
 })();
 
-// Update your forEach loop to use the public getAll() function
+// Add a new Pokémon to the repository
+pokemonRepository.add({ name: "Pikachu", height: 0.4, types: ["electric"] });
+
+// Iterate over each Pokémon in the repository
 pokemonRepository.getAll().forEach(function (pokemon) {
   let output = `${pokemon.name} (Height: ${pokemon.height})`;
   if (pokemon.height > 1.5) {

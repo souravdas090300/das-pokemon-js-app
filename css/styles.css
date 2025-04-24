@@ -1,4 +1,4 @@
-.pokemon-list {
+.pokemon-item {
   background-color: hsl(48, 100%, 50%);
   color: #001685;
   border: none;
@@ -9,12 +9,12 @@
   transition: background-color 0.2s, transform 0.2s;
 }
 
-.pokemon-list:hover {
+.pokemon-item:hover {
   background-color: #30b300;
   transform: scale(1.05);
 }
 
-.pokemon-list:active {
+.pokemon-item:active {
   background-color: #004085;
   transform: scale(0.95);
 }

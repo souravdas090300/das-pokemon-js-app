@@ -1,20 +1,18 @@
-.pokemon-item {
-  background-color: hsl(48, 100%, 50%);
-  color: #001685;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 16px;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s;
+.show-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff; /* Modal background color */
+  color: #001685; /* Text color */
+  border: 2px solid #001685; /* Border for the modal */
+  border-radius: 12px; /* Rounded edges */
+  padding: 20px 30px; /* Spacing inside the modal */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  z-index: 1000; /* Ensure it appears above other elements */
+  display: none; /* Initially hidden */
 }
 
-.pokemon-item:hover {
-  background-color: #30b300;
-  transform: scale(1.05);
-}
-
-.pokemon-item:active {
-  background-color: #004085;
-  transform: scale(0.95);
+.show-modal.active {
+  display: block; /* Show modal when active */
 }

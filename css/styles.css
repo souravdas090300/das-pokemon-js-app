@@ -10,15 +10,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-
-  /* to show it above other content */
+  background: white; /* Changed to white */
   z-index: 999;
-
-  /* to allow scrolling if the screen is not high enough*/
   overflow: auto;
-
-  /* this is used to center the modal */
   display: grid;
   text-align: center;
+  place-items: center; /* Centers the wrapping box */
+}
+
+.modal-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  text-align: left;
 }

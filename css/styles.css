@@ -18,12 +18,12 @@
   place-items: center; /* Centers the wrapping box */
 }
 
-.modal-box {
+.modal {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   max-width: 500px;
   width: 100%;
-  text-align: left;
+  text-align: center;
 }

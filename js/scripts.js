@@ -169,7 +169,7 @@ pokemonRepository.loadList().then(function () {
   });
 });
 
-function showmodal(item) {
+/* function showmodal(item) {
   let modalBody = $(".modal-body");
   let modalTitle = $(".modal-title");
   let pokemonHeader = $(".modal-header");
@@ -192,4 +192,4 @@ function showmodal(item) {
   modalBody.append(heightElement);
   modalBody.appemd(typesElement);
   modalBody.append(abilitiesElement);
-}
+} */

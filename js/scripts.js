@@ -8,25 +8,6 @@ let pokemonRepository = (function () {
   modalContainer.classList.add("modal-container");
   document.body.appendChild(modalContainer);
 
-  // Add CSS styles
-  let styleElement = document.createElement("style");
-  styleElement.textContent = `
-    .pokemon-list {
-      margin: 50px auto;
-      max-width: 500px;
-    }
-
-    .pokemon-list li {
-      text-align: center;
-    }
-
-    .pokemon-list li button {
-      width: 70%;
-      font-size: 1.2em;
-    }
-  `;
-  document.head.appendChild(styleElement);
-
   // Add a Pokémon to the list
   function add(pokemon) {
     if (
@@ -49,7 +30,7 @@ let pokemonRepository = (function () {
   function addListItem(pokemon) {
     let pokemonListElement = document.querySelector(".pokemon-list");
     let listPokemon = document.createElement("li");
-    listGroupItem.classList.add("list-group-item");
+    listPokemon.classList.add("list-group-item");
     let button = document.createElement("button");
     button.classList.add("btn", "btn-primary");
     button.innerText = pokemon.name;

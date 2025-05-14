@@ -1,3 +1,4 @@
+// pokemon repository module.
 let pokemonRepository = (function () {
   // Private variables
   let pokemonList = [];

@@ -12,7 +12,7 @@ If I could redo the project, I would invest more time in automated testing and A
 
 ## Screenshot
 
-![Pokémon API Screenshot][def]![alt text](<Screenshot (11).png>) ![alt text](<Screenshot (12).png>)
+![Pokémon API Screenshot][def]![alt text](<Screenshot (21).png>) ![alt text](<Screenshot (22).png>)![alt text](<Screenshot(27).png>)
 
 ---
 

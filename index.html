@@ -10,26 +10,49 @@
       integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <title>Das JS App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="dist/styles.min.css" />
+    <title>Pokémon Explorer</title>
   </head>
 
   <body>
     <header>
-      <nav class="navbar bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <span class="navbar-brand mb-0 h1">Das-JS-App</span>
+          <span class="navbar-brand mb-0 h1">
+            <img
+              src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
+              alt="PokéAPI"
+              height="40"
+            />
+          </span>
+          <form class="d-flex" role="search">
+            <input
+              id="pokemonSearch"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search Pokémon..."
+              aria-label="Search"
+            />
+          </form>
         </div>
       </nav>
     </header>
 
-    <main>
-      <div class="pokemon-list list-group"></div>
+    <main class="container-fluid">
+      <div class="pokemon-list row justify-content-center"></div>
+      <div class="pagination-controls d-flex justify-content-center my-4">
+        <button id="prevBtn" class="btn btn-primary mx-2">Previous</button>
+        <button id="nextBtn" class="btn btn-primary mx-2">Next</button>
+      </div>
       <div id="pokemonModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+              <h5 class="modal-title"></h5>
               <button
                 type="button"
                 class="btn-close"
@@ -37,7 +60,7 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body"></div>
+            <div class="modal-body text-center"></div>
             <div class="modal-footer">
               <button
                 type="button"
@@ -52,7 +75,12 @@
       </div>
     </main>
 
-    <footer></footer>
+    <footer class="text-center py-3">
+      <p>
+        Pokémon data provided by
+        <a href="https://pokeapi.co/" target="_blank">PokéAPI</a>
+      </p>
+    </footer>
     <script
       src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
       integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
@@ -68,6 +96,6 @@
       integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D"
       crossorigin="anonymous"
     ></script>
-    <script src="js/scripts.js"></script>
+    <script src="dist/scripts.min.js"></script>
   </body>
 </html>

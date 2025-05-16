@@ -2,7 +2,9 @@
 let pokemonRepository = (function () {
   // Private variables
   let pokemonList = [];
-  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?offset=150&limit=150";
+  let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let currentPage = 1;
+  const itemsPerPage = 30;
 
   // Add a Pokémon to the list
   function add(pokemon) {
@@ -22,9 +24,19 @@ let pokemonRepository = (function () {
     return pokemonList;
   }
 
+  // Get paginated Pokémon
+  function getPaginatedItems(page) {
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return pokemonList.slice(startIndex, endIndex);
+  }
+
   // Add a Pokémon list item to the DOM
   function addListItem(pokemon) {
     let pokemonListElement = document.querySelector(".pokemon-list");
+    let listItem = document.createElement("div");
+    listItem.classList.add("col-md-4", "col-12");
+
     let listPokemon = document.createElement("li");
     listPokemon.classList.add("list-group-item");
     let button = document.createElement("button");
@@ -40,7 +52,51 @@ let pokemonRepository = (function () {
     });
 
     listPokemon.appendChild(button);
-    pokemonListElement.appendChild(listPokemon);
+    listItem.appendChild(listPokemon);
+    pokemonListElement.appendChild(listItem);
+  }
+
+  // Update pagination buttons
+  function updatePaginationButtons() {
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage * itemsPerPage >= pokemonList.length;
+  }
+
+  // Load Pokémon for current page
+  function loadPage(page) {
+    currentPage = page;
+    const paginatedItems = getPaginatedItems(page);
+    const pokemonListElement = document.querySelector(".pokemon-list");
+    pokemonListElement.innerHTML = "";
+
+    paginatedItems.forEach(function (pokemon) {
+      addListItem(pokemon);
+    });
+
+    updatePaginationButtons();
+  }
+
+  // Initialize pagination
+  function initPagination() {
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    prevBtn.addEventListener("click", function () {
+      if (currentPage > 1) {
+        loadPage(currentPage - 1);
+      }
+    });
+
+    nextBtn.addEventListener("click", function () {
+      if (currentPage * itemsPerPage < pokemonList.length) {
+        loadPage(currentPage + 1);
+      }
+    });
+
+    updatePaginationButtons();
   }
 
   // show modal with Pokemon details.
@@ -71,6 +127,19 @@ let pokemonRepository = (function () {
     modalBody.append(abilitiesElement);
   }
 
+  // Filter Pokémon based on search term
+  function filterPokemon(searchTerm) {
+    return pokemonList.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
+
+  // Clear the Pokémon list in the DOM
+  function clearPokemonList() {
+    let pokemonListElement = document.querySelector(".pokemon-list");
+    pokemonListElement.innerHTML = "";
+  }
+
   // Load Pokémon list from API
   function loadList() {
     return fetch(apiUrl)
@@ -85,6 +154,9 @@ let pokemonRepository = (function () {
           };
           add(pokemon);
         });
+        // Initialize pagination after loading Pokémon
+        loadPage(1);
+        initPagination();
       })
       .catch(function (e) {
         console.error(e);
@@ -120,6 +192,24 @@ let pokemonRepository = (function () {
     });
   }
 
+  // Initialize search functionality
+  function initSearch() {
+    let searchInput = document.getElementById("pokemonSearch");
+    searchInput.addEventListener("input", function () {
+      let searchTerm = searchInput.value.trim();
+      let filteredPokemon = filterPokemon(searchTerm);
+
+      clearPokemonList();
+      if (searchTerm === "") {
+        loadPage(currentPage);
+      } else {
+        filteredPokemon.forEach(function (pokemon) {
+          addListItem(pokemon);
+        });
+      }
+    });
+  }
+
   // Return an object with the public functions
   return {
     getAll: getAll,
@@ -128,12 +218,13 @@ let pokemonRepository = (function () {
     loadList: loadList,
     loadDetails: loadDetails,
     showDetails: showDetails,
+    initSearch: initSearch,
+    loadPage: loadPage,
   };
 })();
 
 // Load Pokémon list and display it
 pokemonRepository.loadList().then(function () {
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
-  });
+  // Initialize search after loading Pokémon
+  pokemonRepository.initSearch();
 });

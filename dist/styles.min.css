@@ -1,3 +1,12 @@
+.modal-img,
+.pokemon-list li button {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.modal-header,
+footer,
+header {
+  background-color: #ef5350;
+}
 body {
   background-color: #f5f5f5;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -6,8 +15,7 @@ body {
   flex-direction: column;
 }
 header {
-  background-color: #ef5350;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .navbar {
   padding: 1rem 2rem;
@@ -26,14 +34,14 @@ header {
 }
 #pokemonSearch:focus {
   border-color: #3d7dca;
-  box-shadow: 0 0 0 0.25rem rgb(61 125 202 / 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(61, 125, 202, 0.25);
 }
 .pokemon-list {
   margin: 30px auto;
   padding: 0 15px;
 }
-.pokemon-list .col-md-4,
-.pokemon-list .col-12 {
+.pokemon-list .col-12,
+.pokemon-list .col-md-4 {
   padding: 10px;
 }
 .pokemon-list li {
@@ -49,43 +57,42 @@ header {
   background-color: #3d7dca;
   border: none;
   color: #fff;
-  transition: all 0.3s;
+  transition: 0.3s;
   text-transform: capitalize;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
 }
 .pokemon-list li button:hover {
   background-color: #ffcb05;
   color: #2a75bb;
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgb(0 0 0 / 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 .modal-content {
   border-radius: 15px;
   border: 3px solid #ffcb05;
 }
 .modal-header {
-  background-color: #ef5350;
   color: #fff;
   border-bottom: 2px solid #ffcb05;
+}
+.modal-body,
+.modal-footer,
+.modal-img {
+  background-color: #f5f5f5;
 }
 .modal-title {
   text-transform: capitalize;
   font-weight: 700;
 }
 .modal-body {
-  background-color: #f5f5f5;
   padding: 30px;
 }
 .modal-img {
-  background-color: #f5f5f5;
   border-radius: 50%;
   padding: 15px;
   margin-bottom: 20px;
   border: 3px solid #3d7dca;
-  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
 }
 .modal-footer {
-  background-color: #f5f5f5;
   border-top: 2px solid #ffcb05;
 }
 .btn-secondary {
@@ -96,7 +103,6 @@ header {
   background-color: #2a75bb;
 }
 footer {
-  background-color: #ef5350;
   color: #fff;
   margin-top: auto;
 }
